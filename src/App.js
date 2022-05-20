@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+
 import './App.css';
+import LoginPage from './Components/LoginPage/LoginPage';
+import Register from './Components/Register/Register';
+import {BrowserRouter as Router,Routes,Route} from "react-router-dom"
+import HeaderPage from './Components/HeaderPage/HeaderPage';
+import AllProducts from './Components/AllProducts/AllProducts';
+import Home from './Components/Home/Home';
+import {useSelector,useDispatch} from'react-redux'
+import Cart from './Components/Cart/Cart';
+import { useEffect } from 'react';
+import { loadProducts } from './Redux-Services/Actions/Actions';
 
 function App() {
+  const states=useSelector(state=>state)
+  console.log(states)
+  const dispatch=useDispatch()
+useEffect(()=>{
+dispatch(loadProducts())
+},[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+      <HeaderPage/>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/register' element={<Register/>}/>
+          <Route path='/login' element={<LoginPage/>}/>
+          <Route path='/cart' element={<Cart/>}/>
+
+     </Routes>
+     </Router>
     </div>
   );
 }
