@@ -1,22 +1,28 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox,message } from 'antd';
+import { Form, Input, Button,message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {Link} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { signUp } from './../../Redux-Services/Actions/Actions';
-const Register = () => {
+import { CContainer } from '@coreui/react';
+
+const Register = ({onClose}) => {
   const success = () => {
-    message.success('This is a success message');
+    message.success('Successfully registered');
   };
   const dispatch=useDispatch()
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
         dispatch(signUp(values))
+        onClose()
         success()
       };
     return (
+      
+      <CContainer>
         <div style={{display:"flex", justifyContent:"center", marginTop:"10px"}}>
-            <div style={{width:"50%"}}>
+            <div className='p-4' style={{width:"75%"}}>
+            <h3 className='text-center mb-4'>Sign Up</h3>
         <Form
         name="normal_login"
         className="login-form"
@@ -26,6 +32,7 @@ const Register = () => {
         onFinish={onFinish}
       >
         <Form.Item
+        className='mb-5'
           name="username"
           rules={[
             {
@@ -37,6 +44,7 @@ const Register = () => {
           <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
         </Form.Item>
         <Form.Item
+        className='mb-5'
           name="email"
           rules={[
             {
@@ -48,6 +56,7 @@ const Register = () => {
           <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
         </Form.Item>
         <Form.Item
+        className='mb-5'
           name="password"
           rules={[
             {
@@ -62,8 +71,24 @@ const Register = () => {
             placeholder="Password"
           />
         </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" className="login-form-button">
+        <Form.Item
+        className='mb-5'
+          name="confirm-password"
+          rules={[
+            {
+              required: true,
+              message: 'Please Confirm Password!',
+            },
+          ]}
+        >
+          <Input
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            type="password"
+            placeholder="Confirm Your Password"
+          />
+        </Form.Item>
+        <Form.Item className='mb-5'>
+          <Button type="primary" htmlType="submit" className="login-form-button" size='lg' block>
             Register
           </Button>
           Or <Link to="/login">Login</Link>
@@ -71,6 +96,7 @@ const Register = () => {
       </Form>
       </div>
       </div>
+      </CContainer>
     );
 };
 

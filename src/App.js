@@ -10,6 +10,7 @@ import {useSelector,useDispatch} from'react-redux'
 import Cart from './Components/Cart/Cart';
 import { useEffect } from 'react';
 import { loadProducts } from './Redux-Services/Actions/Actions';
+import ProductDetails from './Components/AllProducts/ProductDetails';
 
 function App() {
   const states=useSelector(state=>state)
@@ -18,6 +19,12 @@ function App() {
 useEffect(()=>{
 dispatch(loadProducts())
 },[])
+
+// useEffect(()=>{
+//   fetch('./Products.json')
+//   .then(res=>res.json())
+//   .then(data=>console.log(data))
+// },[])
   return (
     <div>
       <Router>
@@ -27,6 +34,7 @@ dispatch(loadProducts())
           <Route path='/register' element={<Register/>}/>
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/cart' element={<Cart/>}/>
+          <Route path='details/:productKey' element={<ProductDetails/>}/>
 
      </Routes>
      </Router>

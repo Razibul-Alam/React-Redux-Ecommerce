@@ -1,31 +1,40 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Card, Avatar, Col, Button,message} from 'antd';
 import { EditOutlined, EllipsisOutlined, PlusOutlined} from '@ant-design/icons';
 // import { useAddToCart } from '../../Custom-Hooks/useAddToCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from './../../Redux-Services/Actions/Actions';
+import { Link } from 'react-router-dom';
+import CreateAccount from './../Create-Account/CreateAccount';
 
 const { Meta } = Card;
 
 const SingleProduct = ({product}) => {
+  const [show,setShow] = useState(false);
+  const showDrawer = () => {
+    setShow(true);
+  };
   const success = () => {
     message.success('Added Successfully');
   };
  const dispatch=useDispatch()
-  const{name,img}=product;
+  const{name,img,key}=product;
     return (
+      <>
+      <CreateAccount visible={show} setVisible={setShow}/>
         <Col xs={24} sm={4} md={6} lg={8} xl={8}>
-           <Card
+          <Card
     style={{ width: 300,padding:"10px"}}
     cover={
-      <img
+     <Link onClick={showDrawer} to={`details/${key}`}> <img
         alt="example"
         src={img}
-      />
+        
+      /></Link>
     }
     actions={[
       // <PlusOutlined/>,
-      <Button  onClick={()=>dispatch(addToCart(product))} block><PlusOutlined onClick={success}/> Add to Cart</Button>,
+      <Button  onClick={()=>dispatch(addToCart(product))} block className='bg-dark text-light'><PlusOutlined onClick={success}/> Add to Cart</Button>,
       // <EllipsisOutlined key="ellipsis" />,
     ]}
   >
@@ -34,8 +43,9 @@ const SingleProduct = ({product}) => {
       title={name}
       // description="This is the description"
     />
-  </Card>  
+  </Card>
   </Col>
+  </>
     );
 };
 

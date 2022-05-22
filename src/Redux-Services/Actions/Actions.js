@@ -6,10 +6,26 @@ export const addToCart=(payload)=>{
     }
 
 }
+// remove from cart
+export const removeCart=(payload)=>{
+    return{
+        type:'removeCart',
+        payload:payload
+    }
+
+}
+// clear cart
+export const placeOrder=(payload)=>{
+    return{
+        type:'placeOrder',
+        payload:payload
+    }
+
+}
 // load products
 export const loadProducts=()=>{
     return async (dispatch)=>{
-     fetch('https://jsonplaceholder.typicode.com/users')
+     fetch('../../../Products.json')
         .then(res=>res.json())
         .then(data=>{
             dispatch({
