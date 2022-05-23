@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Button,message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {Link} from 'react-router-dom'
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { signUp } from './../../Redux-Services/Actions/Actions';
 import { CContainer } from '@coreui/react';
 
@@ -12,10 +12,14 @@ const Register = ({onClose}) => {
   };
   const dispatch=useDispatch()
     const onFinish = (values) => {
-        console.log('Received values of form: ', values);
-        dispatch(signUp(values))
+      console.log(values)
+        if(values.password===values.Cpassword){
+          dispatch(signUp(values))
         onClose()
         success()
+        }else{
+          alert('password not matched')
+        }
       };
     return (
       
@@ -73,7 +77,7 @@ const Register = ({onClose}) => {
         </Form.Item>
         <Form.Item
         className='mb-5'
-          name="confirm-password"
+          name="Cpassword"
           rules={[
             {
               required: true,

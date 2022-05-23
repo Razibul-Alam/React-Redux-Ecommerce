@@ -51,3 +51,10 @@ export const signIn=(payload)=>{
         payload:payload
     }
 }
+// logout
+export const logOut=(payload)=>{
+    return{
+        type:'logout',
+        payload:payload
+    }
+}

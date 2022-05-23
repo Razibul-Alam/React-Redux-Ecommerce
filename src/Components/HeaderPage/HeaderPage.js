@@ -18,7 +18,6 @@ const HeaderPage = () => {
   const [visible, setVisible] = useState(false)
   const cart=useSelector(state=>state.cart)
   const user=useSelector(state=>state.user)
-console.log(user)
     return (
       <>
       <CreateAccount visible={show} setVisible={setShow}/>
@@ -38,8 +37,9 @@ console.log(user)
               </CNavLink></Link>
             </CNavItem>
           </CNavbarNav>
+          {user?.email?<span style={{color:"white"}}onClick={showDrawer}><UserOutlined />{user.username}</span>
+          :<span onClick={showDrawer} style={{color:"white"}}><UserOutlined />SignUp</span>}
           <CForm className="d-flex">
-          <span onClick={showDrawer} style={{color:"white"}}><UserOutlined /> {user.email? 'Logout':'SignUp'}</span>
             <CFormInput type="search" className="me-3 ms-2" placeholder="Search" />
       <Link to='cart'><Badge count={cart.length}><Title style={{color:"white"}} level={3}><ShoppingCartOutlined /></Title></Badge></Link>
           </CForm>

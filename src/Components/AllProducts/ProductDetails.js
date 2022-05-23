@@ -3,6 +3,7 @@ import { Descriptions } from 'antd';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './ProductDetaiils.css'
+import { CContainer, CRow, CButton } from '@coreui/react';
 const ProductDetails = () => {
   const{productKey}=useParams()
   const products=useSelector(state=>state.products)
@@ -10,6 +11,8 @@ const ProductDetails = () => {
   console.log(singleProduct,productKey,products)
     return (
         <>
+        <CContainer className='mt-5'>
+        <CRow>
             <div className='product'>
             <img src={singleProduct?.img} alt=""></img>
             <div className='product-info'>
@@ -18,38 +21,29 @@ const ProductDetails = () => {
                 <p><small>Seller: {singleProduct?.seller}</small></p>
                 <p><small>Ratings: {singleProduct?.star} stars</small></p>
             </div>
-            {/* <button onClick={() => handleAddToCart(product)} className='btn-cart'>
+            <CButton className='btn-cart bg-dark text-light'>
                 <p className='btn-text'>Add to Cart</p>
-                <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
-            </button> */}
+            </CButton>
         </div>
-  {/* <div>
+  <div>
     <Descriptions
-      title="Responsive Descriptions"
+      title="Product Full Dedails"
       bordered
       column={{ xxl: 4, xl: 3, lg: 3, md: 3, sm: 2, xs: 1 }}
     >
-      <Descriptions.Item label="Product">Cloud Database</Descriptions.Item>
+      <Descriptions.Item label="Category">Cloud Database</Descriptions.Item>
       <Descriptions.Item label="Billing">Prepaid</Descriptions.Item>
-      <Descriptions.Item label="time">18:00:00</Descriptions.Item>
-      <Descriptions.Item label="Amount">$80.00</Descriptions.Item>
+      <Descriptions.Item label="Delivery time">3 Days</Descriptions.Item>
+      <Descriptions.Item label="Stock">$80.00</Descriptions.Item>
       <Descriptions.Item label="Discount">$20.00</Descriptions.Item>
-      <Descriptions.Item label="Official">$60.00</Descriptions.Item>
+      <Descriptions.Item label="Shipping">$10.00</Descriptions.Item>
       <Descriptions.Item label="Config Info">
-        Data disk type: MongoDB
-        <br />
-        Database version: 3.4
-        <br />
-        Package: dds.mongo.mid
-        <br />
-        Storage space: 10 GB
-        <br />
-        Replication factor: 3
-        <br />
-        Region: East China 1
+       {singleProduct?.features.map(pd=><p>{pd?.description} {pd.value}</p>)}
       </Descriptions.Item>
     </Descriptions>
-  </div> */}
+  </div>
+  </CRow>
+  </CContainer>
   </>
 );
 };
