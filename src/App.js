@@ -9,8 +9,6 @@ import Cart from './Components/Cart/Cart';
 import ProductDetails from './Components/AllProducts/ProductDetails';
 
 function App() {
-  
-
   return (
     <div>
       <Router>
