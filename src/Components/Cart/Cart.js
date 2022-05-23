@@ -1,11 +1,11 @@
 import React from 'react';
-import { Avatar } from 'antd';
+import { Avatar, Empty } from 'antd';
 import { useSelector,useDispatch } from 'react-redux';
-import { CBadge, CContainer, CListGroup, CListGroupItem, CButton } from '@coreui/react';
+import { CContainer, CButton,CTable, CTableHead, CTableRow, CTableHeaderCell, CTableBody, CTableDataCell, } from '@coreui/react';
 import { DeleteOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { removeCart } from '../../Redux-Services/Actions/Actions';
 import { placeOrder } from './../../Redux-Services/Actions/Actions';
-
+const tableHead=['Item','Action','Quantity','Price']
 const Cart = () => {
   const dispatch=useDispatch()
   // get cart from redux
@@ -22,28 +22,31 @@ const Cart = () => {
      alert('successfull')
    }
     return (
-      <CContainer>
-        <div className='contianer-fluid mt-3'>
-           
-            <CListGroup>
-  {cart.map(item=><CListGroupItem className="d-flex justify-content-between align-items-center">
-  <span><Avatar src={item.img} />
-    {item.name.slice(0,12)}</span>
-    <span className='text-danger' onClick={()=>removeFromCart(item.key)}><DeleteOutlined /></span>
-   <span><PlusOutlined /><CBadge color="primary" shape="rounded-pill">
-     {1} 
-    </CBadge><MinusOutlined /></span> 
-    <CBadge color="primary" shape="rounded-pill">
-      {item.price}
-    </CBadge>
-  </CListGroupItem>)}
-</CListGroup>
+      <>
+      {cart.length?<CContainer>
+<CTable>
+  <CTableHead>
+    <CTableRow>
+      {tableHead.map(itemName=><CTableHeaderCell scope="col">{itemName}</CTableHeaderCell>)}
+    </CTableRow>
+  </CTableHead>
+  <CTableBody>
+    {cart?.map(item=><CTableRow>
+      {/* <CTableDataCell></CTableDataCell> */}
+      <CTableDataCell><Avatar src={item.img} />{item.name}</CTableDataCell>
+      <CTableDataCell><span className='text-danger' onClick={()=>removeFromCart(item.key)}><DeleteOutlined /></span></CTableDataCell>
+      <CTableDataCell>1</CTableDataCell>
+      <CTableDataCell>{item.price}</CTableDataCell>
+    </CTableRow>)}
+
+  </CTableBody>
+</CTable>
 <div style={{display:'flex', justifyContent:'flex-end', marginTop:'5px'}} >
     <h4>Total Amount= {totalResult}</h4></div>
 <div style={{display:'flex', justifyContent:'flex-end', marginTop:'5px'}} >
     <CButton size='lg' color='success' className='text-light' onClick={confirmOrder}>Place Order</CButton></div>
-        </div>
-        </CContainer>
+        </CContainer>:<Empty/>}
+        </>
     );
 };
 
