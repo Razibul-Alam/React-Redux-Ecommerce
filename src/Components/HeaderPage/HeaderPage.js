@@ -21,7 +21,7 @@ const HeaderPage = () => {
     return (
       <>
       <CreateAccount visible={show} setVisible={setShow}/>
-    <CNavbar expand="lg bg-dark" colorScheme='dark' >
+    <CNavbar expand="lg bg-dark" colorScheme='dark' className='py-4' >
       <CContainer>
         <CNavbarToggler
           aria-label="Toggle navigation"
@@ -38,7 +38,7 @@ const HeaderPage = () => {
             </CNavItem>
           </CNavbarNav>
           {user?.email?<span style={{color:"white"}}onClick={showDrawer}><UserOutlined />{user.username}</span>
-          :<span onClick={showDrawer} style={{color:"white"}}><UserOutlined />SignUp</span>}
+          :<span onClick={showDrawer} style={{color:"white"}}><span className='mb-3'><UserOutlined /></span><span className='mt-3 ms-1'>SignUp</span></span>}
           <CForm className="d-flex">
             <CFormInput type="search" className="me-3 ms-2" placeholder="Search" />
       <Link to='cart'><Badge count={cart.length}><Title style={{color:"white"}} level={3}><ShoppingCartOutlined /></Title></Badge></Link>

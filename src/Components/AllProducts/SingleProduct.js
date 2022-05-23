@@ -5,7 +5,7 @@ import { addToCart } from './../../Redux-Services/Actions/Actions';
 import { Link } from 'react-router-dom';
 import CreateAccount from './../Create-Account/CreateAccount';
 import { PlusOutlined } from '@ant-design/icons';
-
+import { CCol } from '@coreui/react';
 const { Meta } = Card;
 
 const SingleProduct = ({product}) => {
@@ -24,7 +24,7 @@ const SingleProduct = ({product}) => {
     return (
       <>
       <CreateAccount visible={show} setVisible={setShow}/>
-        <Col xs={24} sm={4} md={6} lg={8} xl={8}>
+        <CCol xs={24} sm={12} md={4} lg={3} xl={3} style={{display:'flex',justifyContent:"center"}} className='mb-4'>
           <Card
     style={{ width: 300,padding:"10px"}}
     cover={
@@ -43,7 +43,7 @@ const SingleProduct = ({product}) => {
       title={name}
     />
   </Card>
-  </Col>
+  </CCol>
   </>
     );
 };

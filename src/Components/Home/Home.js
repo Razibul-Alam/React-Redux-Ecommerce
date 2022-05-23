@@ -8,16 +8,16 @@ const {Content, Footer } = Layout;
 const Home = () => {
     return (
         <div>
-             <Layout className="">
+             {/* <Layout className=""> */}
     <Content>
-      <div className="site-layout-content">
+      <div className="">
         <CContainer>
           <AllProducts/>
           </CContainer>
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>Transport Mall ©2022 Created by Razibul</Footer>
-  </Layout>
+  {/* </Layout> */}
             
         </div>
     );

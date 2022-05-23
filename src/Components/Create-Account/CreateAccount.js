@@ -8,7 +8,6 @@ import { logOut } from './../../Redux-Services/Actions/Actions';
 
 const CreateAccount = ({visible,setVisible}) =>{
   const user=useSelector(state=>state.user)
-  console.log(user)
   const dispatch=useDispatch()
   // drawer closer
     const onClose = () => {  
