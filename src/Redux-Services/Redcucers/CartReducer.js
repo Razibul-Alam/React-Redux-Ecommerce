@@ -1,3 +1,4 @@
+// cart add and remove fuctionality in the reducer
 export const cartReducer=(state=[],action)=>{
 console.log(action,state)
 if(action.type==="addCart"){

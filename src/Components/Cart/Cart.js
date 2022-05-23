@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, InputNumber, Avatar, Button } from 'antd';
+import { Avatar } from 'antd';
 import { useSelector,useDispatch } from 'react-redux';
 import { CBadge, CContainer, CListGroup, CListGroupItem, CButton } from '@coreui/react';
 import { DeleteOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
@@ -8,13 +8,15 @@ import { placeOrder } from './../../Redux-Services/Actions/Actions';
 
 const Cart = () => {
   const dispatch=useDispatch()
+  // get cart from redux
     const cart=useSelector(state=>state.cart)
     const totalResult=cart.reduce((sum,item)=>sum+item.price,0)
-
+// remove from cart function
    const removeFromCart=(key)=>{
      console.log(key)
      dispatch(removeCart(key))
    }
+  //  confirm order function
    const confirmOrder=()=>{
      dispatch(placeOrder())
      alert('successfull')

@@ -4,11 +4,15 @@ import SingleProduct from './SingleProduct';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loadProducts } from '../../Redux-Services/Actions/Actions';
+
 const AllProducts = () => {
     const dispatch=useDispatch()
+    // all data loaded here from redux
     useEffect(()=>{
     dispatch(loadProducts())
     },[])
+    
+    // take products from redux
     const products=useSelector(state=>state.products)
     return (
         <div style={{display:"flex",justifyContent:"center"}}>

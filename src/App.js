@@ -13,6 +13,7 @@ function App() {
     <div>
       <Router>
       <HeaderPage/>
+      {/* All routes here */}
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/register' element={<Register/>}/>

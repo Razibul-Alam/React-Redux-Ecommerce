@@ -11,6 +11,7 @@ const Register = ({onClose}) => {
     message.success('Successfully registered');
   };
   const dispatch=useDispatch()
+  // the function used for get input data from From
     const onFinish = (values) => {
       console.log(values)
         if(values.password===values.Cpassword){

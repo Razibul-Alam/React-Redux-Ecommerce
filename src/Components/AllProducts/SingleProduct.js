@@ -1,22 +1,25 @@
 import React,{useState} from 'react';
-import { Card, Avatar, Col, Button,message} from 'antd';
-import { EditOutlined, EllipsisOutlined, PlusOutlined} from '@ant-design/icons';
-import { useDispatch, useSelector } from 'react-redux';
+import { Card,Col, Button,message} from 'antd';
+import { useDispatch} from 'react-redux';
 import { addToCart } from './../../Redux-Services/Actions/Actions';
 import { Link } from 'react-router-dom';
 import CreateAccount from './../Create-Account/CreateAccount';
+import { PlusOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;
 
 const SingleProduct = ({product}) => {
+  // drawe state for showing drawer
   const [show,setShow] = useState(false);
   const showDrawer = () => {
     setShow(true);
   };
+  // this is just a message after success
   const success = () => {
     message.success('Added Successfully');
   };
  const dispatch=useDispatch()
+//  destructuring properties from product
   const{name,img,key}=product;
     return (
       <>
@@ -31,16 +34,13 @@ const SingleProduct = ({product}) => {
         
       /></Link>
     }
+    // add to cart button
     actions={[
-      // <PlusOutlined/>,
       <Button  onClick={()=>dispatch(addToCart(product))} block className='bg-dark text-light'><PlusOutlined onClick={success}/> Add to Cart</Button>,
-      // <EllipsisOutlined key="ellipsis" />,
     ]}
   >
     <Meta
-      // avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
       title={name}
-      // description="This is the description"
     />
   </Card>
   </Col>

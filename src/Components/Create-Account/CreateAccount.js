@@ -10,12 +10,15 @@ const CreateAccount = ({visible,setVisible}) =>{
   const user=useSelector(state=>state.user)
   console.log(user)
   const dispatch=useDispatch()
+  // drawer closer
     const onClose = () => {  
          setVisible(false);
     };
+    // this is just a message
     const success = () => {
       message.success('Successfully logged out');
     };
+    // signout function
     const signOut=()=>{
       dispatch(logOut())
       success()
