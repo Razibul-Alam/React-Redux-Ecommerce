@@ -5,13 +5,12 @@ import Register from './Components/Register/Register';
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom"
 import HeaderPage from './Components/HeaderPage/HeaderPage';
 import Home from './Components/Home/Home';
-import {useSelector,useDispatch} from'react-redux'
 import Cart from './Components/Cart/Cart';
-import { useEffect } from 'react';
-import { loadProducts } from './Redux-Services/Actions/Actions';
 import ProductDetails from './Components/AllProducts/ProductDetails';
 
 function App() {
+  
+
   return (
     <div>
       <Router>

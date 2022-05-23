@@ -1,12 +1,10 @@
 import React from 'react';
-import { Layout, Menu} from 'antd';
+import { Layout} from 'antd';
 import './Home.css'
 import AllProducts from '../AllProducts/AllProducts';
-import ProductsSlider from '../Products-Slider/ProductsSlider';
 import { CContainer } from '@coreui/react';
 
-const { Header, Content, Footer } = Layout;
-const menuItems=["All","Today's deal","Customer service","Gift Card"]
+const {Content, Footer } = Layout;
 const Home = () => {
     return (
         <div>
