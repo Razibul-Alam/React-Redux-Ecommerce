@@ -31,7 +31,8 @@ const CreateAccount = ({visible,setVisible}) =>{
         visible={visible}
         bodyStyle={{ paddingBottom: 80 }}
       >
-        {user.email?<div><h3>{user.username}</h3></div>:<Register onClose={onClose}/>}
+        {user.email?<div><h3>{user.email}</h3>
+        <CButton color="primary" size="sm" onClick={signOut}>Logout</CButton></div>:<Register onClose={onClose}/>}
       </Drawer>
     </>
     );
