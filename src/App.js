@@ -20,11 +20,6 @@ useEffect(()=>{
 dispatch(loadProducts())
 },[])
 
-// useEffect(()=>{
-//   fetch('./Products.json')
-//   .then(res=>res.json())
-//   .then(data=>console.log(data))
-// },[])
   return (
     <div>
       <Router>
@@ -35,7 +30,6 @@ dispatch(loadProducts())
           <Route path='/login' element={<LoginPage/>}/>
           <Route path='/cart' element={<Cart/>}/>
           <Route path='details/:productKey' element={<ProductDetails/>}/>
-
      </Routes>
      </Router>
     </div>

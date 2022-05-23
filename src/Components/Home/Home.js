@@ -11,25 +11,6 @@ const Home = () => {
     return (
         <div>
              <Layout className="">
-    {/* <Header> */}
-      {/* <div className="logo" />
-      <div className='container-fluid'>
-     <CContainer>
-     <Menu
-     className='bg-dark'
-        mode="horizontal"
-        // defaultSelectedKeys={['2']}
-        items={menuItems.map((item, index) => {
-          const key = index + 1;
-          return {
-            key,
-            label: `${item}`,
-          };
-        })}
-      />
-     </CContainer>
-     </div> */}
-    {/* </Header> */}
     <Content>
       <div className="site-layout-content">
         <CContainer>

@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
 import { Card, Avatar, Col, Button,message} from 'antd';
 import { EditOutlined, EllipsisOutlined, PlusOutlined} from '@ant-design/icons';
-// import { useAddToCart } from '../../Custom-Hooks/useAddToCart';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from './../../Redux-Services/Actions/Actions';
 import { Link } from 'react-router-dom';
