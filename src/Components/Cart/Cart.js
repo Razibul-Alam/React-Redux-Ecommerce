@@ -5,21 +5,24 @@ import { CContainer, CButton,CTable, CTableHead, CTableRow, CTableHeaderCell, CT
 import { DeleteOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { removeCart } from '../../Redux-Services/Actions/Actions';
 import { placeOrder } from './../../Redux-Services/Actions/Actions';
+import { useMessage } from './../../Custom-Hooks/useMessage';
 const tableHead=['Item','Action','Quantity','Price']
 const Cart = () => {
+  const{warning,success}=useMessage()
   const dispatch=useDispatch()
   // get cart from redux
     const cart=useSelector(state=>state.cart)
     const totalResult=cart.reduce((sum,item)=>sum+item.price,0)
 // remove from cart function
    const removeFromCart=(key)=>{
-     console.log(key)
      dispatch(removeCart(key))
+     warning()
+
    }
   //  confirm order function
    const confirmOrder=()=>{
      dispatch(placeOrder())
-     alert('successfull')
+     success('Order place')
    }
     return (
       <>

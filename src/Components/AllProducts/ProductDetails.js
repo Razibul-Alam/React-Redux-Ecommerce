@@ -1,14 +1,24 @@
 import React from 'react';
 import { Descriptions } from 'antd';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './ProductDetaiils.css'
 import { CContainer, CRow, CButton } from '@coreui/react';
+import {addToCart} from '../../Redux-Services/Actions/Actions'
+import { useMessage } from './../../Custom-Hooks/useMessage';
 const ProductDetails = () => {
+  const{success}=useMessage()
+  // get single product details by prams
   const{productKey}=useParams()
   const products=useSelector(state=>state.products)
   const singleProduct=products.find(product=>product.key==productKey)
-  console.log(singleProduct,productKey,products)
+  // add cart function bring from reducer
+  const dispatch=useDispatch()
+  const addProductToCart=(item)=>{
+dispatch(addToCart(item))
+success('The product added')
+  }
+  
     return (
         <>
         <CContainer className='mt-5'>
@@ -21,7 +31,7 @@ const ProductDetails = () => {
                 <p><small>Seller: {singleProduct?.seller}</small></p>
                 <p><small>Ratings: {singleProduct?.star} stars</small></p>
             </div>
-            <CButton className='btn-cart bg-dark text-light'>
+            <CButton className='btn-cart bg-dark text-light' onClick={()=>addProductToCart(singleProduct)}>
                 <p className='btn-text'>Add to Cart</p>
             </CButton>
         </div>
